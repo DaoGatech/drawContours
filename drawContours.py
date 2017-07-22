@@ -23,8 +23,7 @@ def evaluate():
     filename = 't.jpg'
     with open(filename, 'wb') as f:
         f.write(body)
-    analyze()
-    return ''
+    return analyze()
 
 
 def analyze():
@@ -36,9 +35,9 @@ def analyze():
 
     for cnt in contours:
         # Get approximate polygons
+        #It is an implementation of Douglas-Peucker algorithm
         approx = cv2.approxPolyDP(cnt, 0.03 * cv2.arcLength(cnt, True), True)
 
-        print(len(approx))
         if len(approx) == 3:
             return "Triangle"
 
